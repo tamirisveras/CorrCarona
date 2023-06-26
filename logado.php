@@ -29,7 +29,7 @@
             </div>
             
                 <?php
-                include_once "config.php";
+                include_once "conexao.php";
 
                 $conexao = mysqli_connect($servidor, $usuario, $password, $banco);
 
