@@ -1,0 +1,154 @@
+.form-row {
+    width: 100%;
+    padding: 0 0 10px;
+
+}
+
+.form-row option {
+    max-width: 10px;
+    margin: 1% auto 4% auto;
+}
+
+.foto {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+  }
+
+  .foto-texto{
+    color: hsl(0, 0%, 100%);
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .inpdddut[type="file"] {
+    padding: 1px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #E8F0FE;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+  }
+      
+
+body{
+    margin: 0;
+    font-family: "Roboto",sans-serif;
+}
+
+
+.figura{
+    width: 40%;
+    height: 100vh;
+    float: left;
+    background-color: transparent;
+    padding: 20px 40px;
+    box-sizing:border-box;
+}
+
+
+
+.formulario{
+    width: 60%;
+    height: 100vh;
+    float: right;
+    background-color: #92e3a9;
+    padding: 40px;
+    box-sizing: border-box;
+}
+.ilustra{
+    text-align: center;
+    margin-top: 10%;
+}
+.ilustra img{
+    max-width: 800px;
+    width: 100%;
+}
+
+.formulario h2{
+    color: #ffff;
+    font-size: 32px;
+    margin-bottom: 0;
+}
+.formulario p{
+    color: #ffff;
+    font-size: 18px;
+    margin-top: 0;
+}
+.menu-form{
+    padding: 0;
+}
+.menu-form li{
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: solid 2px #ffff;
+    padding: 5px 15px;
+}
+
+.menu-form li a{
+    text-decoration: none;
+    color: #ffff;
+}
+.formulario form{
+    max-width: 300px;
+}
+.formulario input{
+    padding: 8px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+}
+container-form .bt-login{
+    background-color: #ffff;
+    display:inline-block;
+    color:#3d704c;
+    width: auto;
+    padding: 10px 15px;
+    align-items: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+  padding:12px 20px;
+  width: 250px;
+  border:0;
+  background: #28BE8A; 
+  border-radius: 50px;
+  color:#fff;
+  font-family: sans-serif;
+  font-weight:700;
+  letter-spacing: 2px;
+  cursor:pointer;
+}
+
+.container-form{
+    max-width: 400px;
+    margin: 1% auto 4% auto;
+}
+.cd{
+    text-decoration: none;
+    color: #75B687;
+    font-weight: bold
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 1010px){
+    .figura , .formulario{
+        float: none;
+        width: auto;
+        height: auto;
+    }
+}
+
+
+
