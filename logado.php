@@ -17,8 +17,8 @@
 
         <?php 
             if($_SESSION['tipoUsuario'] == 'Passageiro'){
-
-            
+                include "usuario.php";
+                $motorista_disponivel = motorista_disponivel();
         ?>
     
             <div class="row">
@@ -29,27 +29,12 @@
             </div>
 
             
-                <?php
-                include_once "conexao.php";
-
-                $conexao = mysqli_connect($servidor, $usuario, $password, $banco);
-
-                if (!$conexao) {
-                    die("Erro ao conectar ao banco de dados: " . mysqli_connect_error());
-                }
-                
-    
-                $sql = "SELECT * FROM usuario WHERE tipo = 'Motorista' and disponivel = 1 ";
-                $result = mysqli_query($conexao, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    
+            <?php              
+                if ($motorista_disponivel->num_rows > 0) {
                     echo "<section class='class_1' >
                         <div class='row g-3'>
-                    ";
-                    
-                        while ($row = mysqli_fetch_assoc($result)) {?>
-                            
+                    ";                    
+                        while ($row = $motorista_disponivel->fetch_assoc()) {?>                            
                                 <div class="col-sm-12 col-lg-4">
                                     <div  backup="" class="class_3 item_class_0 shadow">
                                         <div class='' >
@@ -77,25 +62,15 @@
                                     
                                     </div>
                                 </div>
-                        
-
-                        <?php
-                        
+                        <?php                        
                         }
-
-                    echo " </div>
-                    
+                    echo " </div>                    
                     </section>";
                 }  else {
                     echo '<div class="alert alert-info message" role="alert">Nenhum motorista cadastrado.</div>';
                 }
-                
-
-
-                ?>
-            <!--</div>-->
-            <?php 
             }
-            ?>
+                ?>
+        
     </main>
 

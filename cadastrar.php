@@ -18,7 +18,7 @@
     if ($resultado->num_rows > 0){
         $_SESSION['msg'] = "Matricula já cadastrada";
         ob_start();
-        header('location: index.php');
+        header("location: index.php");
         exit;
     }else
         $sql = "INSERT INTO usuario(nome, matricula, telefone, tipo, senha) \n

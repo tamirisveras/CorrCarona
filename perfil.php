@@ -1,4 +1,10 @@
-<?php include_once "header.php" ?>
+<?php 
+    include_once "header.php"; 
+    include "usuario.php";
+
+    $usuario = usuario_id($_SESSION['id']);  
+    $usuario = $usuario->fetch_assoc();
+?>
    
     <div class="container">
 
@@ -19,9 +25,9 @@
                         
                         
                         <div class="card-body"> 
-                            <input type="hidden" class="form-control" value="<?php echo $_SESSION['id']; ?>" maxlength="80" name="id_usuario" required> 
-                            <?php if ($_SESSION['tipoUsuario'] == 'Motorista'){
-                                $disponivel =  $_SESSION['disponivel'];
+                            <input type="hidden" class="form-control" value="<?php echo $usuario['id']; ?>" maxlength="80" name="id_usuario" required> 
+                            <?php if ($usuario['tipo'] == 'Motorista'){
+                                $disponivel =  $usuario['disponivel'];
                                 if($disponivel){
                                     $disponivel = "checked";
                                 }else{
@@ -41,29 +47,18 @@
 
                             <div class="col-12 mt-2">
                                 <label class="form-label">Nome</label> 
-                                <input type="text" class="form-control" value="<?php echo $_SESSION['nome']; ?>" disabled maxlength="80" name="nome" required>
+                                <input type="text" class="form-control" value="<?php echo $usuario['nome']; ?>" disabled maxlength="80" name="nome" required>
                         
-                            </div>
-                            <!--
-                            <div class="col-12 mt-2">
-                                <label class="form-label">Senha nova</label>
-                                <input type="password" class="form-control" maxlength="80" name="novaSenha" required>
-                            </div>
-
-                            <div class="col-12 mt-2">
-                                <label class="form-label">Confirmar senha nova</label>
-                                <input type="password" class="form-control" maxlength="80" name="confirmarNovaSenha" required>
-                            </div>-->
-                            
+                            </div>                       
                             <div class="col-12 mt-2">
 
                                     <label class="form-label">Telefone</label> 
-                                    <input type= "tel" class="form-control" id="telefone" value="<?php echo $_SESSION['telefone']; ?>" maxlength="20" name="telefone" required>
+                                    <input type= "tel" class="form-control" id="telefone" value="<?php echo $usuario['telefone']; ?>" maxlength="20" name="telefone" required>
                             </div>
                                 <div class="col-12 mt-2">
                                     <label class="form-label">Tipo</label> 
                                     <select name="tipoUsuario" class="form-control">
-                                        <option class="option" name="tipoUsuario" id="inlineRadio1" value="<?php echo $_SESSION['tipoUsuario']; ?>"><?php echo $_SESSION['tipoUsuario']; ?></option>
+                                        <option class="option" name="tipoUsuario" id="inlineRadio1" value="<?php echo $usuario['tipo']; ?>"><?php echo $usuario['tipo']; ?></option>
                                         <option class="option" name="tipoUsuario" id="inlineRadio1"></option>
                                         <option class="option" name="tipoUsuario" id="inlineRadio1" value="Motorista">Motorista</option>
                                         <option class="option" name="tipoUsuario" id="inlineRadio2" value="Passageiro">Passageiro</option>
@@ -73,10 +68,7 @@
                             <div class="col-3 mt-2">
                                 
                             </div>
-                            <!--
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-secondary" name="submit" type="submit">SALVAR</button>
-                            </div>-->
+                           
                             <div class="d-grid gap-2 col-6 mx-auto">
                                 <button class="btn btn-success" name="submit-form" type="submit">SALVAR</button>
                             </div>
@@ -91,7 +83,7 @@
                 </div>
             </div>
             <div class="col">
-                <?php if($_SESSION['tipoUsuario']== 'Motorista'){ 
+                <?php if($usuario['tipo']== 'Motorista'){ 
                     
                     ?>
                     
@@ -101,10 +93,10 @@
                             <h1 class="">
                                                
                                     <?php 
-                                        if(empty($_SESSION['path'])){
+                                        if(empty($usuario['path'])){
                                             echo '<img src="assets/images/user.png" class="class_5">';                                           
                                         }else
-                                            echo "<img src='$_SESSION[path]' class='class_5'>";
+                                            echo "<img src='$usuario[path]' class='class_5'>";
                                     ?>
                                 
                                 
@@ -114,17 +106,7 @@
                             <div class="m-3">
                                 <label class="form-label text-white" for="nome_imagem">Escolha sua foto de perfil:</label>
                                 <input title="Foto do Perfil" accept=".jpg, .jpeg, .png, .gif, .pdf" class="form-control form-control-md mb-2" name="nome_imagem" type="file" value="nome_imagem">
-                            <!--        
-                            </div>
-                                        
-                            <div class="mb-3">
-                                <button class="btn btn-secondary" name="submit-image" type="submit">SALVAR</button>
-                            </div>
-
-                            <div class="d-grid gap-2 col-6 mx-auto mt-2" >
-                                <button href="" class="btn btn-danger" id="excluir-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">EXCLUIR</button>
-                            </div> -->
-
+                      
                             <div class="mb-3">
                             <div class="d-flex justify-content-center gap-2">
                                 <button class="btn btn-success" name="submit-image" type="submit">SALVAR</button>
@@ -136,8 +118,6 @@
           
                             </div>
                             </div>
-
-                            
                         </div>
                     </form>
                 <?php }?>
@@ -153,7 +133,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <?php echo $_SESSION['nome'];?>
+                    <?php echo $usuario['nome'];?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
@@ -190,7 +170,7 @@
 
         <!--Alert-->
         <div class="alert alert-success" id="alerta" role="alert" style="display: none;">
-            <?php echo $_SESSION['nome'] . ', seu perfil foi atualizado com sucesso!'; ?>
+            <?php echo $usuario['nome'] . ', seu perfil foi atualizado com sucesso!'; ?>
         </div>
 
         <script>
