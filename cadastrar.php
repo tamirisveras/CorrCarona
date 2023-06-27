@@ -21,9 +21,9 @@
     $sql = "SELECT * FROM usuario WHERE matricula =$matricula ";
     $resultado = $conexao->query($sql);
     if ($resultado->num_rows > 0){
-        session_start();
         $_SESSION['msg'] = "Matricula já cadastrada";
         header('location: index.php');
+        exit();
     }else
 
         $sql = "INSERT INTO usuario(nome, matricula, telefone, tipo, senha) \n
@@ -32,9 +32,9 @@
         $resultado = $conexao->query($sql);
 
         if($resultado){
-            session_start();
             $_SESSION['msg'] = "Usuário Cadastrado com sucesso! Faça seu login";
             header('location: login.php');
+            exit();
         }else{
             return false;
         }

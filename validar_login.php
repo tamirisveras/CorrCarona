@@ -23,11 +23,11 @@ function valida_login(){
         $_SESSION['disponivel'] = $resultado['disponivel'];
 
        header("Location: logado.php");
-        
+        exit();
         
     } else {
         header("Location: login.php");
-       
+        exit();       
     }
 
 }
