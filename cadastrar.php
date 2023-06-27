@@ -24,7 +24,7 @@
         $_SESSION['msg'] = "Matricula já cadastrada";
         ob_start();
         header('location: index.php');
-        exit();
+        exit;
     }else
 
         $sql = "INSERT INTO usuario(nome, matricula, telefone, tipo, senha) \n
@@ -36,7 +36,7 @@
             $_SESSION['msg'] = "Usuário Cadastrado com sucesso! Faça seu login";
             ob_start();
             header('location: login.php');
-            exit();
+            exit;
         }else{
             return false;
         }
