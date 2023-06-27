@@ -32,7 +32,7 @@
                                     <div  class="col-3">
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" name="disponivel" type="checkbox" id="flexSwitchCheckChecked" <?php echo isset($disponivel)? $disponivel:'checked' ?> >
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Disponível</label>
+                                            <label class="form-check-label text-nowrap" for="flexSwitchCheckChecked">Disponível</label>
                                         </div>                       
                                     </div>
                             
@@ -78,8 +78,9 @@
                                 <button class="btn btn-secondary" name="submit" type="submit">SALVAR</button>
                             </div>-->
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-secondary" name="submit-form" type="submit">SALVAR</button>
+                                <button class="btn btn-success" name="submit-form" type="submit">SALVAR</button>
                             </div>
+
                             <div class="d-grid gap-2 col-6 mx-auto mt-4" >
                                 <button href="" class="btn btn-danger" id="excluir-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">EXCLUIR</button>
                             </div>
@@ -124,11 +125,12 @@
 
                             <div class="mb-3">
                             <div class="d-flex justify-content-center gap-2">
-                                <button class="btn btn-secondary" name="submit-image" type="submit">SALVAR</button>
+                                <button class="btn btn-success" name="submit-image" type="submit">SALVAR</button>
                                 <div class="ms-1">
                                     
                                 </div> 
-                                <button href="" class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">REMOVER</button>
+                                <!--<button href="" class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">REMOVER</button>-->
+                                <button class="btn btn-danger" name="remover_foto" type="button">REMOVER FOTO</button>
                             </div>
                             </div>
 
@@ -190,4 +192,5 @@
             alert(nome);
         }
     </script>
-    
+
+

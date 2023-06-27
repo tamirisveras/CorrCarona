@@ -55,7 +55,7 @@ if (isset($_SESSION['msg'])) {
                     <!--<input class="bt-login" type="button" name="submit-login" value="ACESSAR" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
                     
                 </form>
-                <p>Esqueceu sua senha?<a href="https://instagram.com/rayline.mendes" class="cd"> Contate-nos </a></p>
+                <p>Esqueceu sua senha?<a href="https://www.instagram.com/corrcarona/" class="cd"> Contate-nos </a></p>
             </div>
         </section>
              

@@ -43,7 +43,8 @@
                 $resultado = $conexao->query($sql);
             
                 if($resultado){      
-                    include_once "manipular_foto.php";              
+                    include_once "manipular_foto.php"; 
+                    #include_once "remover_file.php";            
                     
                     $path_antigo = $_SESSION['path'];
                     
@@ -54,6 +55,7 @@
                     header('location: perfil.php');
                 }else{
                     return false;
+                    #echo '<img src="assets/images/user.png" class="class_5">';
                     }
                 
             }
