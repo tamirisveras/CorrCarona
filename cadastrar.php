@@ -22,6 +22,7 @@
     $resultado = $conexao->query($sql);
     if ($resultado->num_rows > 0){
         $_SESSION['msg'] = "Matricula já cadastrada";
+        ob_start();
         header('location: index.php');
         exit();
     }else
@@ -33,6 +34,7 @@
 
         if($resultado){
             $_SESSION['msg'] = "Usuário Cadastrado com sucesso! Faça seu login";
+            ob_start();
             header('location: login.php');
             exit();
         }else{
