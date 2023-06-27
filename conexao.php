@@ -21,7 +21,7 @@
 
     
 
-    $conexao = mysqli_connect($servidor, $usuario, $password, $banco, $port);
+    $conexao = new mysqli($servidor, $usuario, $password, $banco, $port);
     if(!$conexao){
         die("Houve um erro: ". mysqli_connect_error());
     }
