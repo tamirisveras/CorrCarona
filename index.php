@@ -1,23 +1,3 @@
-<?php
-    include_once "conexao.php";
-
-        $nome = filter_input(INPUT_GET, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
-        $matricula = filter_input(INPUT_GET, 'matricula', FILTER_SANITIZE_SPECIAL_CHARS);
-        $telefone = str_replace('()', '', filter_input(INPUT_GET, 'telefone', FILTER_SANITIZE_SPECIAL_CHARS));
-       
-        if(isset($_POST['corrcarona2'])){
-            $nome = $_POST['nome'];
-            $matricula = $_POST['matricula'];
-
-            $conexao ->connect("SELECT * FROM nome WHERE nome = '$nome' AND matricula = '$matricula");
-            $resultado = $conexao->query($query);
-
-            if ($resultado->num_rows == 1) {
-                $logado = true;
-            }
-        }
-       
-?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -39,13 +19,7 @@
     </head>
 
     <body>
-        <?php  session_start();
-        if (isset($_SESSION['msg'])) {
-            $mensagem = $_SESSION['msg'];
-            echo"$mensagem";
-            session_destroy();
-        }?>
-
+       
         <section class="figura">
             <div class="logo">
                 <img src="tela_login/style/imagens/CorrCarona.png" alt="Logo CorrCarona" width="200px">

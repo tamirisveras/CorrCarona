@@ -1,13 +1,23 @@
 <?php
-if ($_SESSION['tipoUsuario'] == 'Motorista') {
-    if (isset($_SESSION['path'])) {
+    include_once "conexao.php";
+    session_start();
+    $id_usuario = $_SESSION['id'];
+    $path_antigo = $_SESSION['path'];
+    if(!empty($path_antigo)){
+       
 
-        unlink($_SESSION['path']);
-        unset($_SESSION['path']);
+        $sql = "UPDATE usuario SET path = '' WHERE id = $id_usuario";  
+        $resposta = $conexao->query($sql);
+        if($resposta){
+            include_once 'manipular_foto.php';
+
+            if(removerImagem($path_antigo)){
+                $_SESSION['path'] = '';
+            };
+            
+        }
     }
+    header('location: perfil.php');
+    exit();
 
-    $fotoPadrao = 'assets/images/user.png';
-
-    $_SESSION['path'] = $fotoPadrao;
-}
 ?>

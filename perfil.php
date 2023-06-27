@@ -91,18 +91,20 @@
                 </div>
             </div>
             <div class="col">
-                <?php if($_SESSION['tipoUsuario']== 'Motorista'){ ?>
-
+                <?php if($_SESSION['tipoUsuario']== 'Motorista'){ 
+                    
+                    ?>
+                    
                     <form class="row" method="POST" action="update_file.php" enctype="multipart/form-data"> 
                         <div  backup="" class="class_3 item_class_0 shadow">
                             <div class='' ></div>
                             <h1 class="">
-                                                        
+                                               
                                     <?php 
-                                        if(isset($_SESSION['path'])){
-                                            echo "<img src='$_SESSION[path]' class='class_5'>";
+                                        if(empty($_SESSION['path'])){
+                                            echo '<img src="assets/images/user.png" class="class_5">';                                           
                                         }else
-                                        echo '<img src="assets/images/user.png" class="class_5">';
+                                            echo "<img src='$_SESSION[path]' class='class_5'>";
                                     ?>
                                 
                                 
@@ -130,7 +132,8 @@
                                     
                                 </div> 
                                 <!--<button href="" class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">REMOVER</button>-->
-                                <button class="btn btn-danger" name="remover_foto" type="button">REMOVER FOTO</button>
+                                <button class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#modal-excluir-foto" name="remover_foto" type="button">REMOVER FOTO</button>
+          
                             </div>
                             </div>
 
@@ -156,6 +159,27 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                     
                     <form action="excluir.php" method="post">
+                        <button type="submit" class="btn btn-danger">Sim</button>
+                    </form>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Excluir foto -->
+        <div class="modal fade" id="modal-excluir-foto" tabindex="-1" aria-labelledby="exampleModal-foto" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Realente deseja excluir essa foto? </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    
+                    <form action="remove_file.php" method="post">
                         <button type="submit" class="btn btn-danger">Sim</button>
                     </form>
                     

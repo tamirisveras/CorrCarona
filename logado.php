@@ -56,17 +56,12 @@
                                         </div>
                                         <h1 class="">
                                             <?php 
-                                                if(isset($row['path'])){
-                                                    echo "<img src='$row[path]' class='class_5'>";
-                                                  
+                                                if(empty($row['path'])){
+                                                    echo '<img src="assets/images/user.png" class="class_5">';                                           
+                                                }else{
+                                                    echo "<img src='$_SESSION[path]' class='class_5'>";                                                
                                                 }
-                                                
-                                                if($row['path'] == null){
-                                                
-                                                echo "<img src='assets/images/user.png' class='class_5'>";
-                                            }
-                                            ?>
-                                        
+                                            ?>                                        
                                             <br>
                                         </h1>
                                         
