@@ -44,7 +44,7 @@
                                                 if(empty($row['path'])){
                                                     echo '<img src="assets/images/user.png" class="class_5">';                                           
                                                 }else{
-                                                    echo "<img src='$_SESSION[path]' class='class_5'>";                                                
+                                                    echo "<img src='$row[path]' class='class_5'>";                                                
                                                 }
                                             ?>                                        
                                             <br>
