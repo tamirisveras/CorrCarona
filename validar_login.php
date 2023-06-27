@@ -21,13 +21,14 @@ function valida_login(){
         $_SESSION['path'] = $resultado['path'];
         $_SESSION['id'] = $resultado['id'];
         $_SESSION['disponivel'] = $resultado['disponivel'];
-
-       header("Location: logado.php");
-        exit();
+        
+        ob_start();
+        header("Location: logado.php");
+        exit;
         
     } else {
         header("Location: login.php");
-        exit();       
+        exit;       
     }
 
 }
