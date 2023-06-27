@@ -17,10 +17,11 @@
     $usuario = $_ENV['BD_USER'];
     $password = $_ENV['BD_PASS'];
     $banco = $_ENV['BD_NAME'];
+    $port = $_ENV['BD_PORT'];
 
     
 
-    $conexao = mysqli_connect($servidor, $usuario, $password, $banco);
+    $conexao = mysqli_connect($servidor, $usuario, $password, $banco, $port);
     if(!$conexao){
         die("Houve um erro: ". mysqli_connect_error());
     }
