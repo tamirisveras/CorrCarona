@@ -7,15 +7,51 @@
 
     $imagem = $_FILES['nome_imagem'];
         $pasta = "assets/images/";
+        
         $nomeAtualImagem = $imagem['name'];
         $tempPath = $imagem["tmp_name"];
+        $extensao = strtolower(pathinfo($nomeAtualImagem, PATHINFO_EXTENSION));
+        $novoNomeImagem = $pasta. time() . "." . $extensao;
+        var_dump($nomeAtualImagem);
+        //modelo antigo sem reduzir imagem 
+           $resposta = move_uploaded_file($tempPath, $novoNomeImagem);
+           if($resposta){
+            $sql = "UPDATE usuario
+                SET path = '$novoNomeImagem'
+                WHERE id = $usuario_id            
+                ";
+                        
+                $resultado = $conexao->query($sql);
+            
+                if($resultado){      
+                    include_once "manipular_foto.php"; 
+                    #include_once "remover_file.php";            
+                    
+                    $path_antigo = $_SESSION['path'];
+                    
+                    $retorno = removerImagem($path_antigo);
+                
+                    $_SESSION['path'] = $path;
+                    $_SESSION['msg'] = "Imagem Alterada com sucesso! ";
+                    ob_start();
+                    header('location: perfil.php');
+                    exit;
+                }else{
+                    return false;
+           }
+        }
+
+        //Modelo com redução
+        /*
         
         $qualidade= 60;
         $extensao = strtolower(pathinfo($nomeAtualImagem, PATHINFO_EXTENSION));
         $base_name = basename($nomeAtualImagem);
         $originalPath = $pasta.$base_name; 
         $novoNomeImagem = $pasta.time(). "." . $extensao;
-
+        $novoNomeImagem = dir($originalPath);
+        var_dump($novoNomeImagem);
+        die();
         if(empty($nomeAtualImagem)){
             ob_start();
             header('location: perfil.php');
@@ -55,6 +91,7 @@
                 }
             }
         }
+        */
 
     function comprimir_imagem($tempPath, $originalPath, $qualidade){
         $imgsize = getimagesize($tempPath);
