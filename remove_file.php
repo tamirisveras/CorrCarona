@@ -1,7 +1,13 @@
 <?php
     include_once "conexao.php";
+    ob_start();
+    session_start();
     $id_usuario = $_SESSION['id'];
-    $path_antigo = $_SESSION['path'];
+    include "usuario.php";   
+    $usuario = usuario_id($_SESSION['id']);  
+    $usuario = $usuario->fetch_assoc();
+
+    $path_antigo = $usuario['path'];
     if(!empty($path_antigo)){
         $sql = "UPDATE usuario SET path = '' WHERE id = $id_usuario";  
         $resposta = $conexao->query($sql);

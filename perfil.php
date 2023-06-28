@@ -103,28 +103,27 @@
                                     <?php 
                                         if(empty($usuario['path'])){
                                             echo '<img src="assets/images/user1.png" class="class_5">';                                           
-                                        }else
-                                            echo "<img src='$usuario[path]' class='class_5'>";
-                                    ?>
-                                
-                                
-                            
+                                        }else{
+                                           echo "<img src='$usuario[path]' class='class_5'>";
+                                        }
+                                    ?>                             
                                 <br>
-                            </h1>
+                            </h1> <!--
                             <div class="m-3">
                                 <label class="form-label text-white" for="nome_imagem">Escolha sua foto de perfil:</label>
                                 <input title="Foto do Perfil" accept=".jpg, .jpeg, .png, .gif, .pdf" class="form-control form-control-md mb-2" name="nome_imagem" type="file" value="nome_imagem">
                       
                             <div class="mb-3">
+                           
                             <div class="d-flex justify-content-center gap-2">
                                 <button class="btn btn-success" style="background-color: #34a853;" name="submit-image" type="submit">SALVAR</button>
                                 <div class="ms-1">
                                     
-                                </div> 
+                                </div> -->
                                 <!--<button href="" class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">REMOVER</button>-->
-                                <button class="btn btn-danger" style="background-color: #f77668;" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#modal-excluir-foto" name="remover_foto" type="button">REMOVER FOTO</button>
+                                <!--<button class="btn btn-danger" style="background-color: #f77668;" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#modal-excluir-foto" name="remover_foto" type="button">REMOVER FOTO</button>
           
-                            </div>
+                            </div>-->
                             </div>
                         </div>
                     </form>
