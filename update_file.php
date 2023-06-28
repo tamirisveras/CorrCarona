@@ -1,7 +1,8 @@
-
 <?php
     include_once 'conexao.php';
     $imagem = $_FILES['nome_imagem'];
+    ob_start();
+    session_start();
     $usuario_id = $_SESSION['id'];
 
     $imagem = $_FILES['nome_imagem'];

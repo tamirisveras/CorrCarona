@@ -21,7 +21,6 @@ function valida_login(){
         $_SESSION['path'] = $resultado['path'];
         $_SESSION['id'] = $resultado['id'];
         $_SESSION['disponivel'] = $resultado['disponivel'];
-        
         ob_start();
         header("Location: logado.php");
         exit;

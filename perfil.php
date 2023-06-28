@@ -102,7 +102,7 @@
                                                
                                     <?php 
                                         if(empty($usuario['path'])){
-                                            echo '<img src="assets/images/user.png" class="class_5">';                                           
+                                            echo '<img src="assets/images/user1.png" class="class_5">';                                           
                                         }else
                                             echo "<img src='$usuario[path]' class='class_5'>";
                                     ?>
