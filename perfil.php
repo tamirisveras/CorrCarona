@@ -18,6 +18,13 @@
                             include "update.php";
                             $resposta = update();
                             echo "$resposta";
+                            echo'<script>
+                                setTimeout(function(){ 
+                                    $(document).ready(function() {
+                                        $(window).prop("location", location.href);
+                                    });
+                                }, 2000);
+                            </script>';
                         }
                     ?>
                     
@@ -60,21 +67,22 @@
                                     <select name="tipoUsuario" class="form-control">
                                         <option class="option" name="tipoUsuario" id="inlineRadio1" value="<?php echo $usuario['tipo']; ?>"><?php echo $usuario['tipo']; ?></option>
                                         <option class="option" name="tipoUsuario" id="inlineRadio1"></option>
-                                        <option class="option" name="tipoUsuario" id="inlineRadio1" value="Motorista">Motorista</option>
-                                        <option class="option" name="tipoUsuario" id="inlineRadio2" value="Passageiro">Passageiro</option>
+                                        <option class="fa-light fa-angle-down" class="option" name="tipoUsuario" id="inlineRadio1" value="Motorista">Motorista</option>
+                                        <option class="fa-light fa-angle-down" class="option" name="tipoUsuario" id="inlineRadio2" value="Passageiro">Passageiro</option>
                                     </select>
-                                
+                                    
+                                    
                             </div>
                             <div class="col-3 mt-2">
                                 
                             </div>
                            
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-success" name="submit-form" type="submit">SALVAR</button>
+                                <button  class="btn btn-success" style="background-color: #34a853;"  name="submit-form" type="submit">SALVAR</button>
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto mt-4" >
-                                <button href="" class="btn btn-danger" id="excluir-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">EXCLUIR</button>
+                                <button href="" class="btn btn-danger" style="background-color: #f77668;" id="excluir-usuario" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">EXCLUIR</button>
                             </div>
                         
                         </div>
@@ -109,12 +117,12 @@
                       
                             <div class="mb-3">
                             <div class="d-flex justify-content-center gap-2">
-                                <button class="btn btn-success" name="submit-image" type="submit">SALVAR</button>
+                                <button class="btn btn-success" style="background-color: #34a853;" name="submit-image" type="submit">SALVAR</button>
                                 <div class="ms-1">
                                     
                                 </div> 
                                 <!--<button href="" class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#exampleModal" name="button" type="button">REMOVER</button>-->
-                                <button class="btn btn-danger" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#modal-excluir-foto" name="remover_foto" type="button">REMOVER FOTO</button>
+                                <button class="btn btn-danger" style="background-color: #f77668;" id="excluir-foto" data-bs-toggle="modal" data-bs-target="#modal-excluir-foto" name="remover_foto" type="button">REMOVER FOTO</button>
           
                             </div>
                             </div>
@@ -139,7 +147,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                     
                     <form action="excluir.php" method="post">
-                        <button type="submit" class="btn btn-danger">Sim</button>
+                        <button type="submit" class="btn btn-danger" style="background-color: #f77668;">Sim</button>
                     </form>
                     
                 </div>
@@ -160,30 +168,13 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                     
                     <form action="remove_file.php" method="post">
-                        <button type="submit" class="btn btn-danger">Sim</button>
+                        <button type="submit" class="btn btn-danger" style="background-color: #f77668;">Sim</button>
                     </form>
                     
                 </div>
                 </div>
             </div>
         </div>
-
-        <!--Alert-->
-        <div class="alert alert-success" id="alerta" role="alert" style="display: none;">
-            <?php echo $usuario['nome'] . ', seu perfil foi atualizado com sucesso!'; ?>
-        </div>
-
-        <script>
-            function mostrarAlerta() {
-                var alerta = document.getElementById("alerta");
-                alerta.style.display = "block";
-
-                setTimeout(function() {
-                    alerta.style.display = "none";
-                }, 5000);
-            }
-        </script>
-
 
                             
     </div>

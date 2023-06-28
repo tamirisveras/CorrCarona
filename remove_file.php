@@ -1,11 +1,8 @@
 <?php
     include_once "conexao.php";
-    session_start();
     $id_usuario = $_SESSION['id'];
     $path_antigo = $_SESSION['path'];
     if(!empty($path_antigo)){
-       
-
         $sql = "UPDATE usuario SET path = '' WHERE id = $id_usuario";  
         $resposta = $conexao->query($sql);
         if($resposta){
@@ -17,6 +14,7 @@
             
         }
     }
+    ob_start();
     header('location: perfil.php');
     exit();
 

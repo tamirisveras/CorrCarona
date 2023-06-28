@@ -27,7 +27,7 @@
             $_SESSION['tipoUsuario'] = $tipoUsuario;
             $_SESSION['disponivel'] = $disponivel;
             //header('location: perfil.php');
-            return  '<div class="alert alert-success" role="alert">Perfil atualizado com sucesso!</div>';
+            return  '<div class="alert alert-success" role="alert" style="padding: 5px; font-size: 14px;"> Perfil atualizado com sucesso!</div>';
             
         }else{
             return  '<div class="alert alert-danger" role="alert"Não alterado!</div>';

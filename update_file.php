@@ -1,14 +1,10 @@
 
 <?php
     include_once 'conexao.php';
-    session_start();
-
     $imagem = $_FILES['nome_imagem'];
     $usuario_id = $_SESSION['id'];
 
     $imagem = $_FILES['nome_imagem'];
-   
-
         $pasta = "assets/images/";
         $nomeAtualImagem = $imagem['name'];
         $tempPath = $imagem["tmp_name"];
@@ -20,16 +16,13 @@
         $novoNomeImagem = $pasta.time(). "." . $extensao;
 
         if(empty($nomeAtualImagem)){
+            ob_start();
             header('location: perfil.php');
-           
+            exit;           
         }else{
-
-          
-
             if($extensao != "jpg" && $extensao != "jpeg" && $extensao != "png"){           
                 die("Extensão de arquvio não permitida");
             }else{
-
                 $path = comprimir_imagem( $tempPath, $novoNomeImagem, $qualidade);
 
                 #$resposta = move_uploaded_file($imagem["tmp_name"], $pasta . $novoNomeImagem . "." . $extensao);
@@ -52,19 +45,19 @@
                 
                     $_SESSION['path'] = $path;
                     $_SESSION['msg'] = "Imagem Alterada com sucesso! ";
+                    ob_start();
                     header('location: perfil.php');
+                    exit;
                 }else{
                     return false;
                     #echo '<img src="assets/images/user.png" class="class_5">';
-                    }
-                
+                }
             }
         }
 
     function comprimir_imagem($tempPath, $originalPath, $qualidade){
         $imgsize = getimagesize($tempPath);
         $mime = $imgsize['mime'];
-        var_dump($mime);
         switch($mime){
             
             case 'image/jpeg':
@@ -76,7 +69,5 @@
         }
         imagejpeg($image, $originalPath, $qualidade);
         return $originalPath;
-
     }
-    
-?>
+
